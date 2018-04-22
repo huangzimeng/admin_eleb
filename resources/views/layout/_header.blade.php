@@ -8,17 +8,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand glyphicon glyphicon-home" href="#">ELEB</a>
+            <a class="navbar-brand glyphicon glyphicon-home" href="{{route('home.index')}}">ELEB</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#" class="glyphicon glyphicon-bishop">店铺管理<span class="sr-only">(current)</span></a></li>
-                <li><a href="#" class="">Link</a></li>
+                <li><a href="#" class="">店铺管理<span class="sr-only">(current)</span></a></li>
+                <li><a href="#" class="">商家管理</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More+ <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="">更多+</span><span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{{route('admin.index')}}">管理员管理</a></li>
                         <li><a href="{{route('category.index')}}">分类管理</a></li>
                     </ul>
                 </li>
@@ -30,17 +31,23 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">登录</a></li>
+                @auth
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user">{{\Illuminate\Support\Facades\Auth::user()->name}}</span><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <form action="{{route('logout')}}" method="post">
+                            <button class="btn btn-link">注销</button>
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                        </form>
+                        <a href="{{route('modify')}}" class=" btn btn-link">修改密码</a>
                     </ul>
                 </li>
+                @endauth
+                @guest
+                <li><a href="{{route('login')}}">登录</a></li>
+                @endguest
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
