@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         AliyunOss\Laravel\AliyunOssServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'OSS' => AliyunOss\Laravel\AliyunOssFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

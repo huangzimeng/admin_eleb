@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0d67f2da7380465fa0d883a0b48c90f",
+    "content-hash": "109bbc71ab23e35fbc473e2fea602cd3",
     "packages": [
         {
             "name": "aliyuncs/aliyun-oss-php-sdk-laravel",
