@@ -4,8 +4,101 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c232c348c8fb62ae48e8d64c03ebd001",
+    "content-hash": "d0d67f2da7380465fa0d883a0b48c90f",
     "packages": [
+        {
+            "name": "aliyuncs/aliyun-oss-php-sdk-laravel",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aliyun/aliyun-oss-php-sdk-laravel.git",
+                "reference": "a8da2fd61ff03ac5b61dd156fd3f63de92cf4841"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/aliyun/aliyun-oss-php-sdk-laravel/a8da2fd61ff03ac5b61dd156fd3f63de92cf4841.zip",
+                "reference": "a8da2fd61ff03ac5b61dd156fd3f63de92cf4841",
+                "shasum": ""
+            },
+            "require": {
+                "aliyuncs/oss-sdk-php": "~2.2.1",
+                "illuminate/support": "~5.1",
+                "laravel/framework": "~5.2",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0",
+                "satooshi/php-coveralls": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AliyunOss\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "RobertYue19900425",
+                    "homepage": "https://github.com/aliyun"
+                }
+            ],
+            "description": "A simple Laravel 5 and lumen service provider for including the Oss PHP SDK for PHP.",
+            "homepage": "https://github.com/aliyun",
+            "keywords": [
+                "alicloud",
+                "aliyun",
+                "laravel 5",
+                "lumen",
+                "oss",
+                "sdk"
+            ],
+            "time": "2017-08-03T03:20:34+00:00"
+        },
+        {
+            "name": "aliyuncs/oss-sdk-php",
+            "version": "v2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aliyun/aliyun-oss-php-sdk.git",
+                "reference": "0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/aliyun/aliyun-oss-php-sdk/0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e.zip",
+                "reference": "0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OSS\\": "src/OSS"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aliyuncs",
+                    "homepage": "http://www.aliyun.com"
+                }
+            ],
+            "description": "Aliyun OSS SDK for PHP",
+            "homepage": "http://www.aliyun.com/product/oss/",
+            "time": "2017-04-25T09:15:12+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

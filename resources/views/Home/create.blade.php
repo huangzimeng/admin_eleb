@@ -2,6 +2,7 @@
 @section('title','添加商铺')
 
     @section('content')
+        <link rel="stylesheet" type="text/css" href="/webuploader/webuploader.css">
         <form method="post" action="{{route('home.store')}}" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">店铺名称</label>
@@ -39,10 +40,17 @@
                 <label for="exampleInputEmail1">店铺地址</label>
                 <input type="text" name="address" value="{{old('address')}}" class="form-control" id="exampleInputEmail1" placeholder="店铺地址">
             </div>
+
             <div class="form-group">
-                <label for="exampleInputPassword1">店铺图片</label>
-                <input type="file" name="shop_img">
+                <img src="" alt="" id="myimg" width="80px">
             </div>
+            <div id="uploader-demo">
+                <!--用来存放item-->
+                <div id="fileList" class="uploader-list"></div>
+                <div id="filePicker">选择图片</div>
+            </div>
+            <input type="hidden" name="shop_img" id="myinput" value="">
+
             <div class="form-group">
                 <label for="exampleInputPassword1">类型</label>
                 <select name="category_id">
@@ -85,3 +93,35 @@
             {{csrf_field()}}
         </form>
         @stop
+
+@section('js')
+    <script type="text/javascript" src="/webuploader/webuploader.js"></script>
+    <script>
+        // 初始化Web Uploader
+        var uploader = WebUploader.create({
+            // 选完文件后，是否自动上传。
+            auto: true,
+            // swf文件路径
+            swf: '/webuploader/Uploader.swf',
+            // 文件接收服务端。
+            server: '/upload',
+
+            formData:{'_token':"{{csrf_token()}}"},
+            // 选择文件的按钮。可选。
+            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+            pick: '#filePicker',
+            // 只允许选择图片文件。
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            }
+        });
+        // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+        uploader.on( 'uploadSuccess', function( file,response ) {
+            var url = response.url;
+            $("#myimg").attr('src',url);
+            $('myinput').val(url);
+        });
+    </script>
+    @stop

@@ -36,3 +36,7 @@ Route::get('review/{review}','Main\ReviewsController@review')->name('review');
 Route::get('disabled/{disabled}','Main\DisabledsController@disabled')->name('disabled');
 //启用
 Route::get('enable/{enable}','Main\DisabledsController@enable')->name('enable');
+//图片上传
+Route::post('/upload','Main\UploaderController@upload');
+//活动管理
+Route::resource('activity','Main\ActivityController');

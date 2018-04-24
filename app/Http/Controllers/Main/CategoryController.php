@@ -6,6 +6,7 @@ use App\Category;
 use App\Handlers\ImageUploadHandler;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
@@ -20,18 +21,18 @@ class CategoryController extends Controller
         $this->validate($request,
             [
                 'name'=>'required|min:2|unique:categories',
+                'logo'=>'required',
             ],
             [
                 'name.required'=>'分类名称不能为空',
                 'name.min'=>'名称不能少于2个字符',
-                'name.unique'=>'名称已经存在'
+                'name.unique'=>'名称已经存在',
+                'logo.required'=>'请上传图片',
             ]);
-        //保存图片
-        $filename = $uploader->save($request->logo,'logo',1);
         //保存
         Category::create([
             'name'=>$request->name,
-            'logo'=>$filename['path'],
+            'logo'=>$request->logo,
         ]);
         session()->flash('success','添加成功!');
         return redirect()->route('category.index');
@@ -64,8 +65,7 @@ class CategoryController extends Controller
         if ($request->logo == null){//不修改
             $filename = $category->logo;
         }else{//修改
-            $a = $uploader->save($request->logo,'logo',1);
-            $filename=$a['path'];
+            $filename = $request->logo;
         }
         $category->update([
             'name'=>$request->name,

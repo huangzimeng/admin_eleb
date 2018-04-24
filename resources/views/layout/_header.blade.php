@@ -21,15 +21,16 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{route('admin.index')}}">管理员管理</a></li>
                         <li><a href="{{route('category.index')}}">分类管理</a></li>
+                        <li><a href="{{route('activity.index')}}">活动管理</a></li>
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            {{--<form class="navbar-form navbar-left">--}}
+                {{--<div class="form-group">--}}
+                    {{--<input type="text" class="form-control" placeholder="Search">--}}
+                {{--</div>--}}
+                {{--<button type="submit" class="btn btn-default">Submit</button>--}}
+            {{--</form>--}}
             <ul class="nav navbar-nav navbar-right">
                 @auth
                 <li class="dropdown">
