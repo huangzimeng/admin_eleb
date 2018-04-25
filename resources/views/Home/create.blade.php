@@ -121,7 +121,7 @@
         uploader.on( 'uploadSuccess', function( file,response ) {
             var url = response.url;
             $("#myimg").attr('src',url);
-            $('myinput').val(url);
+            $('#myinput').val(url);
         });
     </script>
     @stop

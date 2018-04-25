@@ -15,6 +15,7 @@ class UploaderController extends Controller
         $i_mg = $request->file('file')->store('public/date'.date('md'));//public/RZ7jUQBBPvnuD90Bxr9qz8NXZvTtv36o0aoqKt0g.jpeg
         //本地文件路径: D:\www\admin_eleb\storage\app\public\RZ7jUQBBPvnuD90Bxr9qz8NXZvTtv36o0aoqKt0g.jpeg
 //        $path = storage_path("app/".$img);
+        //制作缩略图
         $thumbimagehander = new ThumbImageHandler();
         $img = $thumbimagehander->thumb($i_mg);
         try{

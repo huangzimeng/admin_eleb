@@ -8,7 +8,6 @@
             <tr>
                 <td>ID</td>
                 <td>名称</td>
-                <td>内容</td>
                 <td>开始时间</td>
                 <td>结束时间</td>
                 <td>操作</td>
@@ -17,12 +16,11 @@
             <tr data-id="{{$activity->id}}">
                 <td>{{$activity->id}}</td>
                 <td>{{$activity->name}}</td>
-                <td>{!! $activity->contents !!}</td>
                 <td>{{$activity->start}}</td>
                 <td>{{$activity->end}}</td>
                 <td>
                     <a href="{{route('activity.edit',['activity'=>$activity])}}" class="btn btn-primary btn-sm">编辑</a>
-                    <a href="{{route('activity.show',['activity'=>$activity])}}" class="btn btn-success btn-sm">查看</a>
+                    <a href="{{route('activity.show',['activity'=>$activity])}}" class="btn btn-success btn-sm">查看活动内容</a>
                     <a href="" class="btn btn-sm btn-danger" name="mydelete">删除</a>
                 </td>
             </tr>

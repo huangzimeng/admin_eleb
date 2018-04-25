@@ -18,10 +18,11 @@ class HomesController extends Controller
         return view('home.create',compact('category'));
     }
     //保存数据
-    public function store(Request $request,ImageUploadHandler $uploader){
+    public function store(Request $request){
         $this->validate($request,
             [
                 'name'=>'required|min:2',
+                'shop_img'=>'required',
                 'email'=>'required|email',
                 'password'=>'required|confirmed|min:10',
                 'start_send' => 'required|numeric',
@@ -60,10 +61,9 @@ class HomesController extends Controller
                 'piao.required' => '请选择是否票标记!',
                 'zhun.required' => '请选择是否准标记!',
                 'address.required'=>'请填写地址',
-                'required.required'=>'请选择分类'
+                'required.required'=>'请选择分类',
+                'shop_img.required'=>'请上传图片',
             ]);
-        $a=$uploader->save($request->shop_img,'shop_img',1);
-        $filename = $a['path'];
         DB::beginTransaction();//开启事务
         try{
             $storeinfo = StoreInfo::create([
@@ -80,7 +80,7 @@ class HomesController extends Controller
                 'zhun'=>$request->zhun,
                 'address'=>$request->address,
                 'category_id'=>$request->category_id,
-                'shop_img'=>$filename,
+                'shop_img'=>$request->shop_img,
                 'status'=>1,
             ]);
             $id = $storeinfo->id;
