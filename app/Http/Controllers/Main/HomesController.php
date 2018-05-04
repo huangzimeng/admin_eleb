@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class HomesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',[
+            'except'=>[]//排除不需要验证的功能
+        ]);
+    }
     //添加商家
     public function create(){
         $category  = Category::all();

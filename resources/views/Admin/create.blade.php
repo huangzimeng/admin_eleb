@@ -20,6 +20,14 @@
                 <label for="exampleInputPassword1">确认密码</label>
                 <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1" placeholder="密码">
             </div>
+            <div class="form-group">
+                @foreach($roles as $role)
+                    <label>
+                        <input type="checkbox" name="role[]" value="{{$role->id}}">
+                        {{$role->display_name}}
+                    </label>
+                @endforeach
+            </div>
             <button type="submit" class="btn btn-default">Submit</button>
             {{csrf_field()}}
         </form>

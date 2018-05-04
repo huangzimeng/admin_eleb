@@ -12,6 +12,14 @@
             <label for="exampleInputPassword1">邮箱</label>
             <input type="text" name="email" value="{{$admin->email}}" class="form-control" id="exampleInputPassword1" placeholder="密码">
         </div>
+        <div class="form-group">
+            @foreach($roles as $role)
+                <label>
+                <input type="checkbox" value="{{$role->id}}" name="role[]" {{$admin->hasRole($role->name)?'checked':''}}>
+                    {{$role->display_name}}
+                </label>
+            @endforeach
+        </div>
         <button type="submit" class="btn btn-default">Submit</button>
         {{csrf_field()}}
         {{method_field('PUT')}}

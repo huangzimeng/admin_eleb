@@ -1,26 +1,26 @@
 @extends('layout.default')
 
-@section('title','管理员列表')
+@section('title','角色列表')
 
     @section('content')
-        <a href="{{route('admin.create')}}" class="btn btn-primary btn-sm">添加</a>
-        <p></p>
-        <table class="table table-responsive table-hover">
+        <h3 style="text-align: center">角色列表</h3>
+        <a href="{{route('role.create')}}" class="btn btn-sm btn-primary">添加角色</a>
+        <table class="table table-bordered">
             <tr>
                 <td>ID</td>
                 <td>名称</td>
-                <td>邮箱</td>
+                <td>描述</td>
                 <td>操作</td>
             </tr>
-            @foreach($admins as $admin)
-            <tr data-id="{{$admin->id}}">
-                <td>{{$admin->id}}</td>
-                <td>{{$admin->name}}</td>
-                <td>{{$admin->email}}</td>
+            @foreach($roles as $role)
+            <tr data-id="{{$role->id}}">
+                <td>{{$role->id}}</td>
+                <td>{{$role->name}}</td>
+                <td>{{$role->description}}</td>
                 <td>
-                    <a href="{{route('admin.edit',['admin'=>$admin])}}" class="btn btn-primary btn-sm">编辑</a>
-                    <a href="{{route('admin.show',['admin'=>$admin])}}" class="btn btn-primary btn-sm">查看角色</a>
-                    <a href="" name="mydelete" class="btn btn-sm btn-danger">删除</a>
+                    <a href="{{route('role.edit',['role'=>$role])}}">修改</a>
+                    <a href="{{route('role.show',['role'=>$role])}}">查看</a>
+                    <a href="" name="mydelete">删除</a>
                 </td>
             </tr>
             @endforeach
@@ -37,10 +37,11 @@
                     var id = tr.data('id');
                     $.ajax({
                         type: "DELETE",
-                        url: 'admin/'+id,
+                        url: 'role/'+id,
                         data: '_token={{ csrf_token() }}',
                         success: function(msg){
-                            tr.fadeOut();
+//                            tr.fadeOut();
+                            console.debug(msg)
                         }
                     });
                 }

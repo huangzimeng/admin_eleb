@@ -10,6 +10,12 @@ use Illuminate\Validation\Rule;
 
 class ActivityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',[
+            'except'=>[]//排除不需要验证的功能
+        ]);
+    }
     //创建活动
     public function create(){
         return view('activity.create');

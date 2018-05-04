@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class ReviewsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',[
+            'except'=>[]//排除不需要验证的功能
+        ]);
+    }
     //审核店铺信息
     public function review(StoreInfo $review){
         $id = $review->id;

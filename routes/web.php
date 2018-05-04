@@ -40,3 +40,14 @@ Route::get('enable/{enable}','Main\DisabledsController@enable')->name('enable');
 Route::post('/upload','Main\UploaderController@upload');
 //活动管理
 Route::resource('activity','Main\ActivityController');
+//统计
+Route::get('/order_count','Main\CountController@order_count')->name('order_count');
+Route::get('/goods_count','Main\CountController@goods_count')->name('goods_count');
+//会员管理
+Route::get('/users','Main\UsersController@index')->name('users.index');
+//权限管理
+Route::resource('permit','Main\PermitController');
+//添加角色
+Route::resource('role','Main\RoleController');
+//会员管理
+Route::get('user/{user}','Main\UsersController@down')->name('down');

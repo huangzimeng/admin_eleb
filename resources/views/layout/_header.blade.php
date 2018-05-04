@@ -14,14 +14,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#" class="">店铺管理<span class="sr-only">(current)</span></a></li>
-                <li><a href="#" class="">商家管理</a></li>
+                <li><a href="{{route('admin.index')}}" class="">管理员管理<span class="sr-only">(current)</span></a></li>
+                <li><a href="{{route('users.index')}}" class="">会员管理</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="">更多+</span><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{route('admin.index')}}">管理员管理</a></li>
-                        <li><a href="{{route('category.index')}}">分类管理</a></li>
-                        <li><a href="{{route('activity.index')}}">活动管理</a></li>
+                        <li><a href="{{route('category.index')}}">店铺分类管理</a></li>
+                        <li><a href="{{route('activity.index')}}">店铺活动管理</a></li>
+                        <li><a href="{{route('order_count')}}">平台订单量统计</a></li>
+                        <li><a href="{{route('goods_count')}}">平台店铺菜品销量统计</a></li>
+                        @admin
+                        <li><a href="{{route('permit.index')}}">权限管理</a></li>
+                        <li><a href="{{route('role.index')}}">角色列表</a></li>
+                        @endadmin
                     </ul>
                 </li>
             </ul>

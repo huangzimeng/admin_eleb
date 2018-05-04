@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Admin;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,11 +13,18 @@ use Illuminate\Validation\Rule;
 
 class AdminsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',[
+            'except'=>[]//排除不需要验证的功能
+        ]);
+    }
     //添加
     public function create(){
-        return view('Admin.create');
+        $roles = Role::all();
+        return view('Admin.create',compact('roles'));
     }
-    //验证属鸡的
+    //验证
     public function store(Request $request){
         //验证
         $this->validate($request,
@@ -24,6 +32,7 @@ class AdminsController extends Controller
                 'name'=>'required|min:2',
                 'email'=>'required|email|unique:admins',
                 'password'=>'required|confirmed|min:6',
+                'role'=>'required'
             ],
             [
                 'name.required'=>'请填写用户名!',
@@ -34,25 +43,33 @@ class AdminsController extends Controller
                 'password.required'=>'请输入密码!',
                 'password.confirmed'=>'2次密码不一致!',
                 'password.min'=>'密码不能少于2个字符!',
+                'role.required'=>'请选择角色!'
             ]);
         //保存
-        Admin::create([
+        $admin = Admin::create([
             'name'=>$request->name,
             'password'=>bcrypt($request->password),
             'email'=>$request->email,
         ]);
-        //添加 成功!
+        //给用户添加角色
+        $admin->roles()->attach($request->role);
+
         session()->flash('success','添加成功!');
         return redirect()->route('admin.index');
     }
-    //管理员列表
+    //列表
     public function index(){
         $admins = Admin::all();
         return view('admin.index',compact('admins'));
     }
+    //查看
+    public function show(Admin $admin){
+        return view('Admin.show',compact('admin'));
+    }
     //编辑-回显
     public function edit(Request $request,Admin $admin){
-        return view('admin.edit',compact('admin'));
+        $roles = Role::all();
+        return view('admin.edit',compact('admin','roles'));
     }
     //编辑-保存
     public function update(Request $request,Admin $admin){
@@ -60,6 +77,7 @@ class AdminsController extends Controller
         $this->validate($request,
             [
                 'name'=>'required|min:2',
+                'role'=>'required',
                 'email'=>['required','email',
                     Rule::unique('admins')->ignore($admin->id)
                     ]
@@ -69,17 +87,20 @@ class AdminsController extends Controller
                 'name.min'=>'用户名不能少于2个字符!',
                 'email.required'=>'邮箱不能为空!',
                 'email.email'=>'邮箱格式不正确!',
+                'role.required'=>'请选择角色!'
             ]);
         //保存
         $admin->update([
             'name'=>$request->name,
             'email'=>$request->email,
         ]);
+        $admin->syncRoles($request->role);
         session()->flash('success','修改成功!');
         return redirect()->route('admin.index');
     }
     //删除
     public function destroy(Admin $admin){
+        $admin->syncRoles();//删除角色关联
         $admin->delete();
         echo  'success';
     }
