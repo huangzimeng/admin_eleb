@@ -15,7 +15,8 @@
         <div class="form-group">
             @foreach($roles as $role)
                 <label>
-                <input type="checkbox" value="{{$role->id}}" name="role[]" {{$admin->hasRole($role->name)?'checked':''}}>
+                <input type="checkbox" value="{{$role->id}}" name="role[]"
+                        {{$admin->hasRole($role->name)?'checked':''}}>
                     {{$role->display_name}}
                 </label>
             @endforeach

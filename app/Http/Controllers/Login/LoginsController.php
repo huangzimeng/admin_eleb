@@ -29,7 +29,7 @@ class LoginsController extends Controller
         if(Auth::attempt(['name'=>$request->name,'password'=>$request->password],$request->has('rememberMe'))){
             //登录成功
             session()->flash('success','登录成功!');
-            return redirect()->route('admin.index');
+            return redirect()->route('home.index');
         }else{
             //登录失败
             session()->flash('danger','登录失败!用户名或密码错误!');

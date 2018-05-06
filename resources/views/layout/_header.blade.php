@@ -13,29 +13,11 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            {{--菜单动态获取  \App\Menu::menus(0):Menu中的方法 --}}
             <ul class="nav navbar-nav">
-                <li><a href="{{route('admin.index')}}" class="">管理员管理<span class="sr-only">(current)</span></a></li>
-                <li><a href="{{route('users.index')}}" class="">会员管理</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="">更多+</span><span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('category.index')}}">店铺分类管理</a></li>
-                        <li><a href="{{route('activity.index')}}">店铺活动管理</a></li>
-                        <li><a href="{{route('order_count')}}">平台订单量统计</a></li>
-                        <li><a href="{{route('goods_count')}}">平台店铺菜品销量统计</a></li>
-                        @admin
-                        <li><a href="{{route('permit.index')}}">权限管理</a></li>
-                        <li><a href="{{route('role.index')}}">角色列表</a></li>
-                        @endadmin
-                    </ul>
-                </li>
+                {{--动态输出菜单栏--}}
+                {!! \App\Menu::menus() !!}
             </ul>
-            {{--<form class="navbar-form navbar-left">--}}
-                {{--<div class="form-group">--}}
-                    {{--<input type="text" class="form-control" placeholder="Search">--}}
-                {{--</div>--}}
-                {{--<button type="submit" class="btn btn-default">Submit</button>--}}
-            {{--</form>--}}
             <ul class="nav navbar-nav navbar-right">
                 @auth
                 <li class="dropdown">

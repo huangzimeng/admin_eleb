@@ -26,6 +26,10 @@
             <td>{{$storeinfo->address}}</td>
         </tr>
         <tr>
+            <td>邮箱:&emsp;</td>
+            <td>{{$storeinfo->email}}</td>
+        </tr>
+        <tr>
             <td>是否是品牌:&emsp;</td>
             <td>@if($storeinfo->brand) √ @else × @endif </td>
         </tr>

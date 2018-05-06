@@ -88,6 +88,7 @@ class HomesController extends Controller
                 'category_id'=>$request->category_id,
                 'shop_img'=>$request->shop_img,
                 'status'=>1,
+                'email'=>$request->email,
             ]);
             $id = $storeinfo->id;
             ShopUser::create([

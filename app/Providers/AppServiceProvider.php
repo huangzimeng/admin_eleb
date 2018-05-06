@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
             <li><a href="{{route('permit.index')}}">权限管理</a></li>
             @endadmin
          */
-        Blade::if('admin',function (){
-            return auth()->check() && auth()->user()->name == 'admin';
-        });
+//        Blade::if('admin',function (){
+//            return auth()->check() && auth()->user()->name == 'admin';
+//        });
     }
 
     /**

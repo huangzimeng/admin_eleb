@@ -7,9 +7,9 @@
         <table class="table table-responsive">
             <tr>
                 <td>ID</td>
-                <td>name</td>
-                <td>display_name</td>
-                <td>description</td>
+                <td>权限名称</td>
+                <td>显示名称</td>
+                <td>描述</td>
                 <td>操作</td>
             </tr>
             @foreach($permissions as $permission)
