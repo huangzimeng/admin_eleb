@@ -10,7 +10,7 @@ class LoginsController extends Controller
 {
     //表单页
     public function create(){
-        return view('Login.create');
+        return view('login.create');
     }
     //验证
     public function store(Request $request){
