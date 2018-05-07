@@ -15,7 +15,7 @@ class Event_prizeController extends Controller
     //添加 奖品
     public function create(){
         $events = enent::all();
-        return view('Event_prize.create',compact('events'));
+        return view('event_prize.create',compact('events'));
     }
     //添加 保存
     public function store(Request $request){
@@ -41,13 +41,12 @@ class Event_prizeController extends Controller
     //奖品 列表
     public function index(){
         $event_prizes = Event_prize::paginate(10);
-//        var_dump($event_prizes[0]->member->shop_name);die();
-        return view('Event_prize.index',compact('event_prizes'));
+        return view('event_prize.index',compact('event_prizes'));
     }
     //奖品 修改
     public function edit(Event_prize $event_prize){
         $events = enent::all();
-        return view('Event_prize.edit',compact('event_prize','events'));
+        return view('event_prize.edit',compact('event_prize','events'));
     }
     //将品 修改
     public function update(Request $request,Event_prize $event_prize){

@@ -35,7 +35,7 @@ class MenusController extends Controller
     public function create(){
         $permission = Permission::all();
         $menus = Menu::where('parent_id',0)->get();
-        return view('Menu.create',compact('menus','permission'));
+        return view('menu.create',compact('menus','permission'));
     }
     //保存
     public function store(Request $request){

@@ -14,7 +14,7 @@ class EventController extends Controller
 {
     //添加 抽奖
     public function create(){
-        return view('Event.create');
+        return view('event.create');
     }
     //添加 保存
     public function store(Request $request){
@@ -70,7 +70,7 @@ class EventController extends Controller
     //抽奖  列表
     public function index(){
         $events = enent::all();
-        return view('Event.index',compact('events'));
+        return view('event.index',compact('events'));
     }
     //查看 抽奖
     public function show(enent $event){
@@ -81,11 +81,11 @@ class EventController extends Controller
             $members[] = $result;
         }
         $prizes = DB::table('event_prizes')->where('events_id',$event->id)->select('name')->get();
-        return view('Event.show',compact('event','members','prizes'));
+        return view('event.show',compact('event','members','prizes'));
     }
     //编辑 抽奖
     public function edit(enent $event){
-        return view('Event.edit',compact('event'));
+        return view('event.edit',compact('event'));
     }
     //编辑 保存
     public function update(Request $request,enent $event){
@@ -199,6 +199,6 @@ class EventController extends Controller
             $b = DB::table('store_infos')->where('id',$value->member_id)->first();
             $value->member_id = $b->shop_name;
         }
-        return view('Event.up',compact('data','title'));
+        return view('event.up',compact('data','title'));
     }
 }

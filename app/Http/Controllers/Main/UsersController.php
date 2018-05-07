@@ -20,7 +20,7 @@ class UsersController extends Controller
     public function index(){
 //        $users = DB::table('users')->get();
         $users = User::all();
-        return view('Users.index',compact('users'));
+        return view('users.index',compact('users'));
     }
     //禁用会员 or 恢复会员
     public function down(User $user){

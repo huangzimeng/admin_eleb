@@ -21,7 +21,7 @@ class ReviewsController extends Controller
         $id = $review->id;
         DB::table('store_infos')->where('id',$id)->update(['status'=>1]);
         //发送邮件提醒
-        Mail::send('Email.review',
+        Mail::send('email.review',
             ['name'=>$review->shop_name],
         function ($message) use ($review){
             $message->to($review->email)->subject('审核通过!');

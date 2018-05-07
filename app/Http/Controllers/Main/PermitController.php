@@ -19,7 +19,7 @@ class PermitController extends Controller
     }
     //添加  权限
     public function create(){
-        return view('Permit.create');
+        return view('permit.create');
     }
     //保存  权限
     public function store(Request $request){
@@ -46,11 +46,11 @@ class PermitController extends Controller
     //权限  列表
     public function index(){
         $permissions = Permission::orderBy('id','desc')->Paginate(8);
-        return view('Permit.index',compact('permissions'));
+        return view('permit.index',compact('permissions'));
     }
     //编辑  回显
     public function edit(Permission $permit){
-        return view('Permit.edit',compact('permit'));
+        return view('permit.edit',compact('permit'));
     }
     //编辑  保存
     public function update(Request $request,Permission $permit){
@@ -80,13 +80,6 @@ class PermitController extends Controller
     }
     //权限  删除
     public function destroy(Permission $permit){
-//        $a = DB::table('permission_role')->where('role_id',$permit->id)->select(DB::raw('count(*) as count'))->get();
-//        if ($a>0){//有权限
-//            echo 1;
-//        }else{
-//            $permit->delete();
-//            echo 2;
-//        }
         $permit->delete();
         echo "success";
     }

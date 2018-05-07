@@ -19,10 +19,10 @@ class CategoryController extends Controller
     }
     //添加分类
     public function create(){
-        return view('Category.create');
+        return view('category.create');
     }
     //保存分类
-    public function store(Request $request,ImageUploadHandler $uploader){
+    public function store(Request $request){
         //验证
         $this->validate($request,
             [
@@ -53,7 +53,7 @@ class CategoryController extends Controller
         return view('category.edit',compact('category'));
     }
     //编辑-保存
-    public function update(Request $request,Category $category,ImageUploadHandler $uploader){
+    public function update(Request $request,Category $category){
         //验证
         $this->validate($request,
             [

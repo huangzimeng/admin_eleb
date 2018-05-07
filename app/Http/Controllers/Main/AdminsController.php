@@ -22,7 +22,7 @@ class AdminsController extends Controller
     //添加
     public function create(){
         $roles = Role::all();
-        return view('Admin.create',compact('roles'));
+        return view('admin.create',compact('roles'));
     }
     //验证
     public function store(Request $request){
@@ -64,7 +64,7 @@ class AdminsController extends Controller
     }
     //查看
     public function show(Admin $admin){
-        return view('Admin.show',compact('admin'));
+        return view('admin.show',compact('admin'));
     }
     //编辑-回显
     public function edit(Request $request,Admin $admin){

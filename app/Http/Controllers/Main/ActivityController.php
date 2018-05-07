@@ -20,14 +20,14 @@ class ActivityController extends Controller
     //创建活动
     public function create(){
         if(!Auth::user()->can('activity.create')){
-            return view('Error.nopage');
+            return view('error.nopage');
         }
         return view('activity.create');
     }
     //保存
     public function store(Request $request){
         if(!Auth::user()->can('activity.create')){
-            return view('Error.nopage');
+            return view('error.nopage');
         }
         $this->validate($request,
             [
@@ -72,7 +72,7 @@ class ActivityController extends Controller
     //列表
     public function index(){
         if(!Auth::user()->can('activity.index')){
-            return view('Error.nopage');
+            return view('error.nopage');
         }
         $now = Carbon::now();
         $activitys = Activity::all();
@@ -81,21 +81,21 @@ class ActivityController extends Controller
     //查看
     public function show(Activity $activity){
         if(!Auth::user()->can('activity.show')){
-            return view('Error.nopage');
+            return view('error.nopage');
         }
         return view('activity.show',compact('activity'));
     }
     //活动-编辑
     public function edit(Activity $activity){
         if(!Auth::user()->can('activity.edit')){
-            return view('Error.nopage');
+            return view('error.nopage');
         }
         return view('activity.edit',compact('activity'));
     }
     //编辑-保存
     public function update(Request $request,Activity $activity){
         if(!Auth::user()->can('activity.edit')){
-            return view('Error.nopage');
+            return view('error.nopage');
         }
         $this->validate($request,
             [
@@ -141,7 +141,7 @@ class ActivityController extends Controller
     //删除
     public function destroy(Activity $activity){
         if(!Auth::user()->can('activity.destroy')){
-            return view('Error.nopage');
+            return view('error.nopage');
         }
         $activity->delete();
         echo "success";

@@ -58,7 +58,7 @@ GROUP BY shop_id ) AS o
 JOIN store_infos AS si ON (o.shop_id = si.id) GROUP BY num DESC;");
         }
 
-        return view('Count.ordercount',compact('day','day_total','month','month_total','all','all_total','counts','counts_total'));
+        return view('count.ordercount',compact('day','day_total','month','month_total','all','all_total','counts','counts_total'));
     }
     //店铺菜品销量统计
     public function goods_count(Request $request){
@@ -166,6 +166,6 @@ JOIN store_infos AS si ON (o.shop_id = si.id) GROUP BY num DESC;");
                 ])
                 ->get();
         }
-        return view('Count.goodscount',compact('day','day_total','month','month_total','all','all_total','counts','counts_total'));
+        return view('count.goodscount',compact('day','day_total','month','month_total','all','all_total','counts','counts_total'));
     }
 }

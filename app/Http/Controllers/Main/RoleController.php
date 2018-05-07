@@ -21,7 +21,7 @@ class RoleController extends Controller
     //添加  角色
     public function create(){
         $permissions = Permission::all();
-        return view('Role.create',compact('permissions'));
+        return view('role.create',compact('permissions'));
     }
     //保存  角色
     public function store(Request $request){
@@ -53,7 +53,7 @@ class RoleController extends Controller
     //角色  列表
     public function index(){
         $roles = Role::all();
-        return view('Role.index',compact('roles'));
+        return view('role.index',compact('roles'));
     }
     //角色  查看
     public function show(Role $role){
@@ -62,18 +62,13 @@ class RoleController extends Controller
             ->select('permissions.display_name')
             ->where('permission_role.role_id',$role->id)
             ->get();
-        return view('Role.show',compact('role','permissions'));
+        return view('role.show',compact('role','permissions'));
     }
     //修改  回显
     public function edit(Role $role){
-//        $b = [];
-//        $a= $role->permissions;
-//        foreach ($a as $value){
-//            $b[] = $value->id;
-//        }
         $rows = DB::table('permission_role')->where('role_id',$role->id)->select('permission_id')->get();
         $permissionss = Permission::all();
-        return view('Role.edit',compact('role','permissionss','rows'));
+        return view('role.edit',compact('role','permissionss','rows'));
     }
     //修改  保存
     public function update(Request $request,Role $role){
