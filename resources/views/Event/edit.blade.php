@@ -10,7 +10,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">活动内容</label>
-                <input type="text" name="contents" value="{{$event->contents}}" class="form-control" id="exampleInputPassword1">
+                <textarea name="contents" id="container" cols="30" rows="10">{{$event->contents}}</textarea>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">开始报名时间</label>

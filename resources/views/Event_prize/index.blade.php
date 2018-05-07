@@ -9,7 +9,7 @@
                 <td>活动名称</td>
                 <td>奖品名称</td>
                 <td>奖品描述</td>
-                <td>中奖人</td>
+                <td>中奖店铺</td>
                 <td>操作</td>
             </tr>
             @foreach($event_prizes as $event_prize)
@@ -18,7 +18,7 @@
                 <td>{{$event_prize->enent->title}}</td>
                 <td>{{$event_prize->name}}</td>
                 <td>{{$event_prize->description}}</td>
-                <td>{{$event_prize->member_id==0?'无':$event_prize->member_id}}</td>
+                <td>{{$event_prize->member_id==0?"无":$event_prize->member->shop_name}}</td>
                 <td>
                     <a href="{{route('event_prize.edit',['event_prize'=>$event_prize])}}" class="btn btn-sm btn-primary">编辑</a>
                     <a href="" name="mydelete" class="btn btn-sm btn-danger">删除</a>

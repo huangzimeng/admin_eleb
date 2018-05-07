@@ -6,11 +6,11 @@
         <form method="post" action="{{route('event.store')}}">
             <div class="form-group">
                 <label for="exampleInputEmail1">活动标题</label>
-                <input type="text" name="title" value="{{old('titlse')}}" class="form-control" id="exampleInputEmail1">
+                <input type="text" name="title" value="{{old('title')}}" class="form-control" id="exampleInputEmail1">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">活动内容</label>
-                <input type="text" name="contents" value="{{old('contents')}}" class="form-control" id="exampleInputPassword1">
+                <textarea name="contents" id="container" cols="30" rows="10">{{old('contents')}}</textarea>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">开始报名时间</label>
@@ -28,7 +28,7 @@
                 <label for="exampleInputPassword1">报名人数限制</label>
                 <input type="text" name="signup_num" value="{{old('signup_num')}}" class="form-control" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-default">提交</button>
+            <button type="submit" class="btn btn-primary btn-sm">提交</button>
             {{csrf_field()}}
         </form>
 
