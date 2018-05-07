@@ -23,7 +23,7 @@ Route::get('user/{user}','Main\UsersController@down')->name('down')->middleware(
  */
 
 Route::get('/',function (){
-    return view('Login.create');
+    return view('login.create');
 });
 //分类
 Route::resource('category','Main\CategoryController');
