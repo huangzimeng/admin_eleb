@@ -31,7 +31,7 @@
                     <a href="{{route('activity.show',['activity'=>$activity])}}" class="btn btn-success btn-sm">查看活动内容</a>
                     @endpermission
 
-                    @permission('activity.destory')
+                    @permission('activity.destroy')
                     <a href="" class="btn btn-sm btn-danger" name="mydelete">删除</a>
                     @endpermission
                 </td>
