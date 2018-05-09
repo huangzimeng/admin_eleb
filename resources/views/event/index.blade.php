@@ -23,6 +23,7 @@
                 <td>
                     <a href="{{route('event.edit',compact('event'))}}" class="btn btn-sm btn-primary">编辑</a>
                     <a href="{{route('event.show',compact('event'))}}" class="btn btn-sm btn-primary">查看</a>
+                    <a href="{{route('show_prize',compact('event'))}}" class="btn btn-sm btn-primary">查看奖品</a>
                     <a href="" name="mydelete" class="btn btn-sm btn-danger">删除</a>
                 </td>
             </tr>

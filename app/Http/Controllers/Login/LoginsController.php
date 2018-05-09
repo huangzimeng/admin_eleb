@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginsController extends Controller
 {
+    public function __construct()
+    {
+        //用以控制去权限
+        $this->middleware('auth', [
+            'except'=>['create','store']
+        ]);
+        $this->middleware('guest', [
+            'only'=> ['create','store']
+            ]);
+    }
     //表单页
     public function create(){
         return view('login.create');

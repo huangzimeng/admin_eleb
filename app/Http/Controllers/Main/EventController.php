@@ -71,6 +71,9 @@ class EventController extends Controller
     public function index(){
         $events = enent::all();
         return view('event.index',compact('events'));
+//        return $contents;
+//        file_put_contents('list.html',$contents);
+//        echo "页面静态化完成!";
     }
     //查看 抽奖
     public function show(enent $event){
@@ -200,5 +203,10 @@ class EventController extends Controller
             $value->member_id = $b->shop_name;
         }
         return view('event.up',compact('data','title'));
+    }
+    //查看抽奖活动对应的奖品
+    public function show_prize(enent $show_prize){
+        $prizes = DB::table('event_prizes')->where('events_id',$show_prize->id)->get();
+        return view('event.show_prize',compact('prizes'));
     }
 }

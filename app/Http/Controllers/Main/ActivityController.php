@@ -77,6 +77,10 @@ class ActivityController extends Controller
         $now = Carbon::now();
         $activitys = Activity::all();
         return view('activity.index',compact('activitys','now'));
+//        $contents = view('activity.index',compact('activitys','now'))->render();
+////        return $contents;
+//        file_put_contents('../resources/views/static/activitylist.html',$contents);
+//        echo "页面静态化完成!";
     }
     //查看
     public function show(Activity $activity){

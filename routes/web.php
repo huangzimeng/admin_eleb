@@ -70,3 +70,5 @@ Route::resource('event_prize','Main\Event_prizeController');
 Route::get('/start_prize/{start_prize}','Main\EventController@start_prize')->name('start_prize');
 //查看中奖名单
 Route::get('/show_members/{show_members}','Main\EventController@show_members')->name('show_members');
+//查看抽奖对应的奖品
+Route::get('/show_prize/{show_prize}','Main\EventController@show_prize')->name('show_prize');
