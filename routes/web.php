@@ -61,7 +61,6 @@ Route::resource('role','Main\RoleController')->middleware('role:root');
 Route::get('user/{user}','Main\UsersController@down')->name('down')->middleware('permission:down');
 //菜单管理
 Route::resource('menu','Main\MenusController')->middleware('role:root');
-
 //抽奖活动
 Route::resource('event','Main\EventController');
 //活动奖品
@@ -72,3 +71,5 @@ Route::get('/start_prize/{start_prize}','Main\EventController@start_prize')->nam
 Route::get('/show_members/{show_members}','Main\EventController@show_members')->name('show_members');
 //查看抽奖对应的奖品
 Route::get('/show_prize/{show_prize}','Main\EventController@show_prize')->name('show_prize');
+//查看店铺列表
+Route::get('shops', 'Main\HomesController@shops')->name('shops');//店铺列表

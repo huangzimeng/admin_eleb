@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Main;
 
 use App\Category;
 use App\Handlers\ImageUploadHandler;
+use App\Search;
 use App\ShopUser;
+use App\SphinxClient;
 use App\StoreInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -121,5 +123,29 @@ class HomesController extends Controller
         $a = DB::table('store_infos')->where('id', '=',$id)->get();
         $storeinfo = $a[0];
         return view('home.show',compact('storeinfo'));
+    }
+    //店铺列表 用于搜索
+    public function shops(Request $request){
+        $infos = $request->keyword;
+        if ($infos == null){//没有搜索.显示所有店铺
+            $shops = StoreInfo::all();
+        }else{
+            $cl = new SphinxClient();
+            $cl->SetServer ( '127.0.0.1', 9312);
+            $cl->SetConnectTimeout ( 10 );
+            $cl->SetArrayResult ( true );
+            $cl->SetMatchMode ( SPH_MATCH_EXTENDED2);
+            $cl->SetLimits(0, 1000);//返回1000条查询结果
+
+            $res = $cl->Query($infos, 'shops');//第二个参数为索引 需要和配置一致
+            if ($res['total']){
+                $data = collect($res['matches'])->pluck('id')->toArray();
+                $shops = StoreInfo::whereIn('id',$data)->get();
+            }else{
+                $shops = [];
+            }
+        }
+
+        return view('home.shops',compact('shops'));
     }
 }

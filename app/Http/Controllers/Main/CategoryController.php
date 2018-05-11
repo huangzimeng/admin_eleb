@@ -46,7 +46,7 @@ class CategoryController extends Controller
     //列表
     public function index(){
         $categorys = Category::all();
-        return view('category.index',compact('categorys'));
+        return view('category.index',compact('categorys'))->render();
     }
     //编辑-回显
     public function edit(Category $category){

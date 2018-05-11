@@ -149,5 +149,7 @@ class ActivityController extends Controller
         }
         $activity->delete();
         echo "success";
+
+
     }
 }
